@@ -1,0 +1,125 @@
+/* Nutrilae testimonials
+   Quote cards with no photography, so the section stays honest while the
+   content is still placeholder and reads well once real quotes land.
+
+   Every color comes from the section's color scheme, so applying or changing
+   the brand palette stays a theme-editor change rather than a code change. */
+
+.nutrilae-testimonials__header {
+  text-align: center;
+  max-width: 62rem;
+  margin: 0 auto 3.6rem;
+}
+
+.nutrilae-testimonials__heading {
+  margin: 0;
+}
+
+.nutrilae-testimonials__subtitle {
+  margin: 0.8rem 0 0;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.nutrilae-testimonials__list {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nutrilae-testimonials__list--2-col-mobile {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem;
+}
+
+.nutrilae-testimonials__item {
+  display: flex;
+}
+
+.nutrilae-testimonials__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 3.2rem 2.8rem 2.8rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  border-radius: 1.2rem;
+  background-color: rgba(var(--color-foreground), 0.03);
+}
+
+.nutrilae-testimonials__quote {
+  position: relative;
+  margin: 0;
+  padding-top: 2.4rem;
+  font-size: 1.7rem;
+  line-height: 1.6;
+}
+
+/* Oversized opening quote mark, drawn from the type scale rather than an image
+   so it inherits the brand heading font automatically. */
+.nutrilae-testimonials__quote::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.8rem;
+  left: -0.2rem;
+  font-family: var(--font-heading-family);
+  font-size: 5.2rem;
+  line-height: 1;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.nutrilae-testimonials__quote > p {
+  margin: 0;
+}
+
+.nutrilae-testimonials__quote > p + p {
+  margin-top: 1.2rem;
+}
+
+.nutrilae-testimonials__attribution {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 2.4rem;
+}
+
+.nutrilae-testimonials__author {
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-heading-family);
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.nutrilae-testimonials__location {
+  font-size: 1.3rem;
+  opacity: 0.75;
+}
+
+@media screen and (min-width: 750px) {
+  .nutrilae-testimonials__list {
+    gap: 3.2rem;
+  }
+
+  .nutrilae-testimonials__list--2-col {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nutrilae-testimonials__list--3-col {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .nutrilae-testimonials__list--4-col {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .nutrilae-testimonials__quote {
+    font-size: 1.8rem;
+  }
+}

@@ -1,0 +1,186 @@
+{{ 'section-nutrilae-testimonials.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="nutrilae-testimonials color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- unless section.settings.title == blank -%}
+      <div class="nutrilae-testimonials__header">
+        <h2 class="nutrilae-testimonials__heading inline-richtext {{ section.settings.heading_size }}">
+          {{ section.settings.title }}
+        </h2>
+        {%- unless section.settings.subtitle == blank -%}
+          <p class="nutrilae-testimonials__subtitle">{{ section.settings.subtitle | escape }}</p>
+        {%- endunless -%}
+      </div>
+    {%- endunless -%}
+
+    <ul
+      class="nutrilae-testimonials__list nutrilae-testimonials__list--{{ section.settings.columns_desktop }}-col nutrilae-testimonials__list--{{ section.settings.columns_mobile }}-col-mobile"
+      role="list"
+    >
+      {%- for block in section.blocks -%}
+        <li class="nutrilae-testimonials__item" {{ block.shopify_attributes }}>
+          <figure class="nutrilae-testimonials__card">
+            {%- if block.settings.quote != blank -%}
+              <blockquote class="nutrilae-testimonials__quote">
+                {{ block.settings.quote }}
+              </blockquote>
+            {%- endif -%}
+
+            {%- if block.settings.author != blank or block.settings.location != blank -%}
+              <figcaption class="nutrilae-testimonials__attribution">
+                {%- if block.settings.author != blank -%}
+                  <span class="nutrilae-testimonials__author">{{ block.settings.author | escape }}</span>
+                {%- endif -%}
+                {%- if block.settings.location != blank -%}
+                  <span class="nutrilae-testimonials__location">{{ block.settings.location | escape }}</span>
+                {%- endif -%}
+              </figcaption>
+            {%- endif -%}
+          </figure>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Placeholder quotes only. Replace every one with a real, permitted customer quote before launch, or hide this section until a reviews app has collected genuine reviews."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "What people are saying",
+      "info": "Leave blank to hide the heading."
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Supporting line",
+      "default": "Real words from real kitchens across Tamil Nadu.",
+      "info": "Only accurate once real quotes are in place. Leave blank to hide it."
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Quotes per row on desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Quotes per row on mobile",
+      "options": [
+        { "value": "1", "label": "1 column" },
+        { "value": "2", "label": "2 columns" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Quote",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Quote",
+          "default": "<p>Placeholder quote. Replace this with a real customer's words before launch.</p>",
+          "info": "Use the customer's own wording, and only with their permission."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Customer name",
+          "default": "Customer name",
+          "info": "A first name is usually enough. Never invent a name."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "City",
+          "info": "Optional, for example Coimbatore or Madurai."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial" },
+        { "type": "testimonial" }
+      ]
+    }
+  ]
+}
+{% endschema %}
