@@ -165,6 +165,61 @@
         "padding_bottom": 56
       }
     },
+    "brand_story": {
+      "type": "image-with-text",
+      "blocks": {
+        "story_caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "Our story",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "story_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "We got tired of reading ingredient lists",
+            "heading_size": "h1"
+          }
+        },
+        "story_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>So we started baking the things we would happily hand our own families. No palm oil, no trans fat, nothing artificial hiding in the small print — just cakes, buns and breads baked fresh every morning and sent right across Tamil Nadu.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "story_button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read our story",
+            "button_link": "/pages/our-story",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "story_caption",
+        "story_heading",
+        "story_text",
+        "story_button"
+      ],
+      "settings": {
+        "image_behavior": "none",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
     "bestsellers_grid": {
       "type": "featured-collection",
       "settings": {
@@ -198,6 +253,7 @@
     "nutrilae_hero",
     "category_showcase",
     "bestsellers_grid",
-    "claims_strip"
+    "claims_strip",
+    "brand_story"
   ]
 }
