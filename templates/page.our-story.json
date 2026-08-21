@@ -1,0 +1,197 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "intro": {
+      "type": "image-with-text",
+      "blocks": {
+        "intro_caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "Our story",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "intro_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "We started with one stubborn question",
+            "heading_size": "h1"
+          }
+        },
+        "intro_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Why is it so hard to find a bake you can enjoy without reading the label twice? Nutrilae began with that question, and a kitchen determined to answer it — with cakes, buns, breads and muffins made the way we would want them made for our own families.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "intro_caption",
+        "intro_heading",
+        "intro_text"
+      ],
+      "settings": {
+        "image_behavior": "none",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 44
+      }
+    },
+    "philosophy": {
+      "type": "rich-text",
+      "blocks": {
+        "philosophy_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Good bakes shouldn't need a disclaimer",
+            "heading_size": "h1"
+          }
+        },
+        "philosophy_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>No palm oil. No trans fat. No artificial colours or flavours. Eggless where it counts. We would rather leave something out altogether than bury it in the small print.</p><p>Everything is baked in small batches, fresh each morning, and sent out across Tamil Nadu — because the kindest thing you can do to a good bake is get it to someone while it is still at its best.</p>"
+          }
+        },
+        "philosophy_button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop the bakery",
+            "button_link": "/collections/all",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "philosophy_heading",
+        "philosophy_text",
+        "philosophy_button"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "promises": {
+      "type": "nutrilae-claims-strip",
+      "blocks": {
+        "claim_palm_oil": {
+          "type": "claim",
+          "settings": {
+            "label": "No Palm Oil",
+            "description": "Not in a single recipe, ever."
+          }
+        },
+        "claim_trans_fat": {
+          "type": "claim",
+          "settings": {
+            "label": "No Trans Fat",
+            "description": "Good fats only, always."
+          }
+        },
+        "claim_colours": {
+          "type": "claim",
+          "settings": {
+            "label": "No Artificial Colours",
+            "description": "Colour comes from real ingredients."
+          }
+        },
+        "claim_fresh": {
+          "type": "claim",
+          "settings": {
+            "label": "Baked Fresh Daily",
+            "description": "Out of the oven, then straight to you."
+          }
+        }
+      },
+      "block_order": [
+        "claim_palm_oil",
+        "claim_trans_fat",
+        "claim_colours",
+        "claim_fresh"
+      ],
+      "settings": {
+        "title": "What we promise, every single bake",
+        "heading_size": "h1",
+        "subtitle": "The same standards whether it's one bun or a full loaf.",
+        "show_dividers": true,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-3",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "categories": {
+      "type": "collection-list",
+      "blocks": {
+        "cakes_brownies": {
+          "type": "featured_collection",
+          "settings": { "collection": "cakes-brownies" }
+        },
+        "muffins": {
+          "type": "featured_collection",
+          "settings": { "collection": "muffins" }
+        },
+        "flavoured_buns": {
+          "type": "featured_collection",
+          "settings": { "collection": "flavoured-buns" }
+        },
+        "plain_burger_buns": {
+          "type": "featured_collection",
+          "settings": { "collection": "plain-burger-buns" }
+        },
+        "bread_loaves": {
+          "type": "featured_collection",
+          "settings": { "collection": "bread-loaves" }
+        }
+      },
+      "block_order": [
+        "cakes_brownies",
+        "muffins",
+        "flavoured_buns",
+        "plain_burger_buns",
+        "bread_loaves"
+      ],
+      "settings": {
+        "title": "What comes out of our ovens",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1",
+        "show_view_all": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "intro",
+    "philosophy",
+    "promises",
+    "categories"
+  ]
+}
