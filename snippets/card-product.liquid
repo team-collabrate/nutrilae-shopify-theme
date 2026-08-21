@@ -27,6 +27,7 @@
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+  {{ 'component-nutrilae-product-details.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
 {%- if card_product and card_product != empty -%}
   {%- liquid
@@ -162,6 +163,12 @@
                 {{ card_product.title | escape }}
               </a>
             </h3>
+            {%- render 'nutrilae-product-claims',
+              product: card_product,
+              size: 'small',
+              limit: 3,
+              skip_styles: true
+            -%}
             <div class="card-information">
               {%- if show_vendor -%}
                 <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>

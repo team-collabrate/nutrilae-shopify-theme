@@ -1,4 +1,6 @@
-{{ 'component-nutrilae-product-details.css' | asset_url | stylesheet_tag }}
+{%- unless skip_styles -%}
+  {{ 'component-nutrilae-product-details.css' | asset_url | stylesheet_tag }}
+{%- endunless -%}
 
 {% comment %}
   Renders a product's claim badges from its metafields.
@@ -12,6 +14,12 @@
   - product: {Object} Product object. Required.
   - size: {String} "small" or "medium", passed through to each badge.
       Default: "medium" (optional)
+  - limit: {Number} Maximum badges to render. Product cards pass a small limit
+      so a product with six claims does not overwhelm the grid. Default: all
+      claims (optional)
+  - skip_styles: {Boolean} Skip the stylesheet tag when the calling template has
+      already loaded it, matching Dawn's card-product convention. Default: false
+      (optional)
 
   Usage:
   {% render 'nutrilae-product-claims', product: product, size: 'small' %}
@@ -20,6 +28,9 @@
 {%- liquid
   assign claims = product.metafields.nutrilae.claims.value
   assign badge_size = size | default: 'medium'
+  if limit != blank and claims.size > limit
+    assign claims = claims | slice: 0, limit
+  endif
 -%}
 
 {%- if claims != blank and claims.size > 0 -%}
