@@ -1,0 +1,217 @@
+{{ 'section-nutrilae-claims-strip.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="nutrilae-claims-strip color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- unless section.settings.title == blank -%}
+      <div class="nutrilae-claims-strip__header">
+        <h2 class="nutrilae-claims-strip__heading inline-richtext {{ section.settings.heading_size }}">
+          {{ section.settings.title }}
+        </h2>
+        {%- unless section.settings.subtitle == blank -%}
+          <p class="nutrilae-claims-strip__subtitle">{{ section.settings.subtitle | escape }}</p>
+        {%- endunless -%}
+      </div>
+    {%- endunless -%}
+
+    <ul
+      class="nutrilae-claims-strip__list nutrilae-claims-strip__list--{{ section.settings.columns_desktop }}-col nutrilae-claims-strip__list--{{ section.settings.columns_mobile }}-col-mobile{% if section.settings.show_dividers %} nutrilae-claims-strip__list--divided{% endif %}"
+      role="list"
+    >
+      {%- for block in section.blocks -%}
+        <li class="nutrilae-claims-strip__item" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != blank -%}
+            <div class="nutrilae-claims-strip__icon">
+              {{
+                block.settings.icon
+                | image_url: width: 160
+                | image_tag:
+                  loading: 'lazy',
+                  width: 80,
+                  height: 80,
+                  alt: ''
+              }}
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.label != blank -%}
+            <p class="nutrilae-claims-strip__label">{{ block.settings.label | escape }}</p>
+          {%- endif -%}
+
+          {%- if block.settings.description != blank -%}
+            <p class="nutrilae-claims-strip__description">{{ block.settings.description | escape }}</p>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Claims strip",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "Baked with nothing to hide",
+      "info": "Leave blank to show the claims on their own, with no heading above them."
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Supporting line",
+      "default": "The same standards in every bake, from a single bun to a full loaf.",
+      "info": "One short sentence under the heading. Leave blank to hide it."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dividers",
+      "label": "Show dividers between claims",
+      "default": true,
+      "info": "Adds a thin vertical line between each claim on desktop."
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Claims per row on desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Claims per row on mobile",
+      "options": [
+        { "value": "1", "label": "1 column" },
+        { "value": "2", "label": "2 columns" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-3",
+      "info": "A dark scheme makes this strip read as a trust band and breaks up the cream sections above and below it."
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "claim",
+      "name": "Claim",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon",
+          "info": "Optional. Use a simple square graphic, ideally 160 x 160 px. All icons should share one style so the row reads as a set."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Claim",
+          "default": "No Palm Oil",
+          "info": "Keep it short — two or three words. Confirm every claim is true of the Nutrilae recipe before publishing, as these are public marketing claims."
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Supporting line",
+          "default": "Not in a single recipe, ever.",
+          "info": "Optional. One short phrase backing up the claim."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Claims strip",
+      "blocks": [
+        {
+          "type": "claim",
+          "settings": {
+            "label": "No Palm Oil",
+            "description": "Not in a single recipe, ever."
+          }
+        },
+        {
+          "type": "claim",
+          "settings": {
+            "label": "No Trans Fat",
+            "description": "Good fats only, always."
+          }
+        },
+        {
+          "type": "claim",
+          "settings": {
+            "label": "No Artificial Colours",
+            "description": "Colour comes from real ingredients."
+          }
+        },
+        {
+          "type": "claim",
+          "settings": {
+            "label": "Baked Fresh Daily",
+            "description": "Out of the oven, then straight to you."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

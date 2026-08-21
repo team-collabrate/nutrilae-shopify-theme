@@ -115,6 +115,56 @@
         "padding_bottom": 40
       }
     },
+    "claims_strip": {
+      "type": "nutrilae-claims-strip",
+      "blocks": {
+        "claim_palm_oil": {
+          "type": "claim",
+          "settings": {
+            "label": "No Palm Oil",
+            "description": "Not in a single recipe, ever."
+          }
+        },
+        "claim_trans_fat": {
+          "type": "claim",
+          "settings": {
+            "label": "No Trans Fat",
+            "description": "Good fats only, always."
+          }
+        },
+        "claim_colours": {
+          "type": "claim",
+          "settings": {
+            "label": "No Artificial Colours",
+            "description": "Colour comes from real ingredients."
+          }
+        },
+        "claim_fresh": {
+          "type": "claim",
+          "settings": {
+            "label": "Baked Fresh Daily",
+            "description": "Out of the oven, then straight to you."
+          }
+        }
+      },
+      "block_order": [
+        "claim_palm_oil",
+        "claim_trans_fat",
+        "claim_colours",
+        "claim_fresh"
+      ],
+      "settings": {
+        "title": "Baked with nothing to hide",
+        "heading_size": "h1",
+        "subtitle": "The same standards in every bake, from a single bun to a full loaf.",
+        "show_dividers": true,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-3",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
     "bestsellers_grid": {
       "type": "featured-collection",
       "settings": {
@@ -147,6 +197,7 @@
   "order": [
     "nutrilae_hero",
     "category_showcase",
-    "bestsellers_grid"
+    "bestsellers_grid",
+    "claims_strip"
   ]
 }
