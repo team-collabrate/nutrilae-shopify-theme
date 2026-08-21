@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "tracking": {
+      "type": "nutrilae-order-tracking",
+      "settings": {
+        "heading": "Where's my order?",
+        "heading_size": "h1",
+        "intro": "<p>Pop in your tracking number and we'll show you exactly where your bakes have got to.</p>",
+        "tracking_url": "",
+        "tracking_query_param": "tracking_number",
+        "field_label": "Tracking number",
+        "button_label": "Track my order",
+        "field_help": "You'll find this in your shipping confirmation email.",
+        "unconfigured_text": "Order tracking goes live as soon as our delivery partner is confirmed. In the meantime, your confirmation email has the latest on your order.",
+        "account_heading": "Ordered with an account?",
+        "account_text": "Log in to see every order you've placed with us, along with its current status.",
+        "account_button_label": "View my orders",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "tracking"
+  ]
+}

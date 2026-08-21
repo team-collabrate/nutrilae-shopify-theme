@@ -1,0 +1,229 @@
+{{ 'section-nutrilae-order-tracking.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign tracking_url = section.settings.tracking_url | strip
+  assign query_param = section.settings.tracking_query_param | strip | default: 'tracking_number'
+  assign field_id = 'NutrilaeTracking-' | append: section.id
+-%}
+
+<div class="nutrilae-order-tracking color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="nutrilae-order-tracking__inner">
+      {%- unless section.settings.heading == blank -%}
+        <h2 class="nutrilae-order-tracking__heading inline-richtext {{ section.settings.heading_size }}">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endunless -%}
+
+      {%- unless section.settings.intro == blank -%}
+        <div class="nutrilae-order-tracking__intro rte">{{ section.settings.intro }}</div>
+      {%- endunless -%}
+
+      {%- if tracking_url != blank -%}
+        {% comment %}
+          Hands off to whichever courier or tracking service is configured. Both the
+          destination and the query parameter are settings, so switching provider is a
+          theme-editor change rather than a code change.
+        {% endcomment %}
+        <form
+          class="nutrilae-order-tracking__form"
+          action="{{ tracking_url }}"
+          method="get"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="field">
+            <input
+              type="text"
+              id="{{ field_id }}"
+              class="field__input"
+              name="{{ query_param | escape }}"
+              required
+              autocomplete="off"
+              placeholder="{{ section.settings.field_label | escape }}"
+            >
+            <label class="field__label" for="{{ field_id }}">
+              {{ section.settings.field_label | escape }}
+              <span aria-hidden="true">*</span>
+            </label>
+          </div>
+
+          <button type="submit" class="button nutrilae-order-tracking__submit">
+            {{ section.settings.button_label | escape }}
+          </button>
+        </form>
+
+        {%- unless section.settings.field_help == blank -%}
+          <p class="nutrilae-order-tracking__help">{{ section.settings.field_help | escape }}</p>
+        {%- endunless -%}
+      {%- else -%}
+        <div class="nutrilae-order-tracking__notice">
+          <p class="nutrilae-order-tracking__notice-text">
+            {{ section.settings.unconfigured_text | escape }}
+          </p>
+        </div>
+      {%- endif -%}
+
+      <div class="nutrilae-order-tracking__alternatives">
+        <h3 class="nutrilae-order-tracking__alt-heading">{{ section.settings.account_heading | escape }}</h3>
+        <p class="nutrilae-order-tracking__alt-text">
+          {{ section.settings.account_text | escape }}
+        </p>
+        <a href="{{ routes.account_url }}" class="button button--secondary">
+          {{ section.settings.account_button_label | escape }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Order tracking",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shopify has no built-in guest order lookup, so this form hands off to your courier or tracking service. Leave the tracking link blank until a delivery partner is chosen and customers will see the fallback message instead of a broken form."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Where's my order?"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro text",
+      "default": "<p>Pop in your tracking number and we'll show you exactly where your bakes have got to.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Tracking lookup"
+    },
+    {
+      "type": "text",
+      "id": "tracking_url",
+      "label": "Tracking page link",
+      "info": "The courier or tracking service page the form opens, for example https://track.example.com/. Leave blank until the delivery partner is confirmed."
+    },
+    {
+      "type": "text",
+      "id": "tracking_query_param",
+      "label": "Tracking link parameter",
+      "default": "tracking_number",
+      "info": "The query parameter the tracking page expects. Check your provider's tracking URL: the part before the equals sign. Common examples are tracking_number, awb or nums."
+    },
+    {
+      "type": "text",
+      "id": "field_label",
+      "label": "Field label",
+      "default": "Tracking number"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Track my order"
+    },
+    {
+      "type": "text",
+      "id": "field_help",
+      "label": "Field help text",
+      "default": "You'll find this in your shipping confirmation email.",
+      "info": "Shown under the form. Leave blank to hide it."
+    },
+    {
+      "type": "text",
+      "id": "unconfigured_text",
+      "label": "Message before tracking is set up",
+      "default": "Order tracking goes live as soon as our delivery partner is confirmed. In the meantime, your confirmation email has the latest on your order.",
+      "info": "Shown instead of the form while the tracking link above is blank."
+    },
+    {
+      "type": "header",
+      "content": "Account lookup"
+    },
+    {
+      "type": "text",
+      "id": "account_heading",
+      "label": "Heading",
+      "default": "Ordered with an account?"
+    },
+    {
+      "type": "text",
+      "id": "account_text",
+      "label": "Text",
+      "default": "Log in to see every order you've placed with us, along with its current status."
+    },
+    {
+      "type": "text",
+      "id": "account_button_label",
+      "label": "Button label",
+      "default": "View my orders"
+    },
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "Order tracking"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,91 @@
+/* Nutrilae order tracking
+   A single narrow column: this page is one task, so nothing competes with the
+   lookup field for attention.
+
+   Every color comes from the section's color scheme, so applying or changing the
+   brand palette stays a theme-editor change rather than a code change. */
+
+.nutrilae-order-tracking__inner {
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+.nutrilae-order-tracking__heading {
+  margin: 0 0 1.2rem;
+}
+
+.nutrilae-order-tracking__intro {
+  margin-bottom: 3.2rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.nutrilae-order-tracking__intro > p:last-child {
+  margin-bottom: 0;
+}
+
+.nutrilae-order-tracking__form {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.nutrilae-order-tracking__form .field {
+  margin: 0;
+}
+
+.nutrilae-order-tracking__submit {
+  justify-self: start;
+}
+
+.nutrilae-order-tracking__help {
+  margin: 1.2rem 0 0;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  opacity: 0.75;
+}
+
+/* Shown while no tracking provider is configured, so the page still reads as
+   finished rather than broken. */
+.nutrilae-order-tracking__notice {
+  padding: 2rem 2.4rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  border-radius: 1rem;
+  background-color: rgba(var(--color-foreground), 0.04);
+}
+
+.nutrilae-order-tracking__notice-text {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.nutrilae-order-tracking__alternatives {
+  margin-top: 4rem;
+  padding-top: 3.2rem;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+.nutrilae-order-tracking__alt-heading {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-heading-family);
+  font-size: 1.8rem;
+  letter-spacing: 0.01em;
+}
+
+.nutrilae-order-tracking__alt-text {
+  margin: 0 0 2rem;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+@media screen and (min-width: 750px) {
+  .nutrilae-order-tracking__form {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 1.6rem;
+  }
+
+  .nutrilae-order-tracking__submit {
+    margin-top: 0;
+  }
+}
