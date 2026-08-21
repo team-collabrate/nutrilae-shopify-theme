@@ -1,0 +1,196 @@
+/* Nutrilae hero
+   Layout, sizing and hierarchy only. Every color comes from the section's color
+   scheme, so applying the final brand palette is a theme-editor change rather
+   than a code change. */
+
+.nutrilae-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.nutrilae-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(var(--color-foreground));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nutrilae-hero--small {
+  min-height: 34rem;
+}
+
+.nutrilae-hero--medium {
+  min-height: 44rem;
+}
+
+.nutrilae-hero--large {
+  min-height: 54rem;
+}
+
+.nutrilae-hero--adapt {
+  min-height: auto;
+}
+
+/* Media */
+
+.nutrilae-hero__media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.nutrilae-hero__media img,
+.nutrilae-hero__media svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nutrilae-hero--adapt .nutrilae-hero__media {
+  position: relative;
+}
+
+/* Content */
+
+.nutrilae-hero__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.nutrilae-hero--adapt .nutrilae-hero__content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+}
+
+.nutrilae-hero__box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+  padding: 3rem 2.4rem;
+}
+
+.nutrilae-hero--text-mobile-center .nutrilae-hero__box {
+  align-items: center;
+  text-align: center;
+}
+
+/* Headline: deliberately oversized for a bold, confident first impression.
+   Font family stays on the theme default until brand typography is chosen. */
+
+.nutrilae-hero__heading {
+  margin: 0;
+  max-width: 20ch;
+}
+
+.nutrilae-hero__text {
+  margin: 0;
+  max-width: 46ch;
+}
+
+.nutrilae-hero__text > p {
+  margin: 0;
+}
+
+/* Claim badges */
+
+.nutrilae-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.nutrilae-hero--text-mobile-center .nutrilae-hero__badges {
+  justify-content: center;
+}
+
+/* Buttons */
+
+.nutrilae-hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.4rem;
+}
+
+.nutrilae-hero__buttons .button {
+  margin: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .nutrilae-hero__buttons .button {
+    flex: 1 1 auto;
+    min-width: 14rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .nutrilae-hero__content {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .nutrilae-hero__box {
+    width: auto;
+    max-width: 62rem;
+    padding: 4rem;
+    gap: 2.4rem;
+  }
+
+  .nutrilae-hero--content-left .nutrilae-hero__content {
+    justify-content: flex-start;
+  }
+
+  .nutrilae-hero--content-center .nutrilae-hero__content {
+    justify-content: center;
+  }
+
+  .nutrilae-hero--content-right .nutrilae-hero__content {
+    justify-content: flex-end;
+  }
+
+  .nutrilae-hero--text-left .nutrilae-hero__box {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .nutrilae-hero--text-left .nutrilae-hero__badges {
+    justify-content: flex-start;
+  }
+
+  .nutrilae-hero--text-center .nutrilae-hero__box {
+    align-items: center;
+    text-align: center;
+  }
+
+  .nutrilae-hero--text-center .nutrilae-hero__badges {
+    justify-content: center;
+  }
+
+  /* Text sits directly on the image, with no panel behind it. */
+  .nutrilae-hero--transparent-box .nutrilae-hero__box {
+    background: transparent;
+    box-shadow: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

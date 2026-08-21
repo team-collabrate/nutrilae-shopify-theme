@@ -1,0 +1,383 @@
+{{ 'section-nutrilae-hero.css' | asset_url | stylesheet_tag }}
+{{ 'component-nutrilae-claim-badge.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #NutrilaeHero-{{ section.id }}::after {
+    opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+  }
+{%- endstyle -%}
+
+{%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
+  {%- style -%}
+    #NutrilaeHero-{{ section.id }}::before,
+    #NutrilaeHero-{{ section.id }} .nutrilae-hero__media::before {
+      padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+      content: '';
+      display: block;
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+{%- liquid
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+
+<div
+  id="NutrilaeHero-{{ section.id }}"
+  class="nutrilae-hero nutrilae-hero--{{ section.settings.image_height }} nutrilae-hero--content-{{ section.settings.desktop_content_position }} nutrilae-hero--text-{{ section.settings.desktop_content_alignment }} nutrilae-hero--text-mobile-{{ section.settings.mobile_content_alignment }}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} nutrilae-hero--adapt{% endif %}{% if section.settings.show_text_box == false %} nutrilae-hero--transparent-box{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+>
+  <div class="nutrilae-hero__media media{% if section.settings.image == blank %} placeholder{% endif %}">
+    {%- if section.settings.image != blank -%}
+      {%- liquid
+        assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+      -%}
+      {{
+        section.settings.image
+        | image_url: width: 3840
+        | image_tag:
+          width: section.settings.image.width,
+          height: image_height,
+          sizes: '100vw',
+          widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+          fetchpriority: fetch_priority
+      }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+
+  <div class="nutrilae-hero__content page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <div class="nutrilae-hero__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            <h2
+              class="nutrilae-hero__heading inline-richtext {{ block.settings.heading_size }}"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.heading }}
+            </h2>
+
+          {%- when 'text' -%}
+            <div class="nutrilae-hero__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
+              <p>{{ block.settings.text }}</p>
+            </div>
+
+          {%- when 'claim_badges' -%}
+            <div class="nutrilae-hero__badges" {{ block.shopify_attributes }}>
+              {%- render 'nutrilae-claim-badge', label: block.settings.badge_1, size: 'medium' -%}
+              {%- render 'nutrilae-claim-badge', label: block.settings.badge_2, size: 'medium' -%}
+              {%- render 'nutrilae-claim-badge', label: block.settings.badge_3, size: 'medium' -%}
+              {%- render 'nutrilae-claim-badge', label: block.settings.badge_4, size: 'medium' -%}
+            </div>
+
+          {%- when 'buttons' -%}
+            <div
+              class="nutrilae-hero__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} nutrilae-hero__buttons--multiple{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.button_label_1 != blank -%}
+                <a
+                  {% if block.settings.button_link_1 == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link_1 }}"
+                  {% endif %}
+                  class="button button--primary"
+                >
+                  {{- block.settings.button_label_1 | escape -}}
+                </a>
+              {%- endif -%}
+              {%- if block.settings.button_label_2 != blank -%}
+                <a
+                  {% if block.settings.button_link_2 == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link_2 }}"
+                  {% endif %}
+                  class="button button--secondary"
+                >
+                  {{- block.settings.button_label_2 | escape -}}
+                </a>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Nutrilae hero",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image",
+      "info": "A placeholder graphic shows until real product photography is added. Use a wide landscape image so the headline stays readable on desktop."
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "label": "Hero height",
+      "info": "Adapt to image matches the height of the image you upload.",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 10,
+      "unit": "%",
+      "label": "Image darkening",
+      "info": "Darkens the image behind the text. Increase this if the headline is hard to read over your photo.",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "desktop_content_position",
+      "label": "Content position on desktop",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "desktop_content_alignment",
+      "label": "Text alignment on desktop",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_alignment",
+      "label": "Text alignment on mobile",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_box",
+      "label": "Show content box on desktop",
+      "info": "Turn off to place the text directly on the image with no background panel.",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Content color scheme",
+      "info": "Placeholder schemes are in use until Nutrilae brand colors are confirmed.",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Headline",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Headline",
+          "info": "Keep it short and confident. This is the first thing a customer reads.",
+          "default": "Freshly baked. Zero shortcuts."
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Headline size",
+          "options": [
+            {
+              "value": "h1",
+              "label": "Large"
+            },
+            {
+              "value": "h0",
+              "label": "Extra large"
+            },
+            {
+              "value": "hxl",
+              "label": "Huge"
+            }
+          ],
+          "default": "h0"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Supporting text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Supporting text",
+          "info": "One line saying what Nutrilae sells and where you deliver.",
+          "default": "Cakes, buns, breads and muffins baked every morning and delivered across Tamil Nadu."
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "label": "Text size",
+          "options": [
+            {
+              "value": "body",
+              "label": "Body"
+            },
+            {
+              "value": "subtitle",
+              "label": "Subtitle"
+            }
+          ],
+          "default": "subtitle"
+        }
+      ]
+    },
+    {
+      "type": "claim_badges",
+      "name": "Claim badges",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "These are headline claims for the whole range. Per-product claims are handled separately on the product page. Confirm every claim is accurate for Nutrilae recipes before launch."
+        },
+        {
+          "type": "text",
+          "id": "badge_1",
+          "label": "Badge 1",
+          "default": "Eggless options"
+        },
+        {
+          "type": "text",
+          "id": "badge_2",
+          "label": "Badge 2",
+          "default": "No palm oil"
+        },
+        {
+          "type": "text",
+          "id": "badge_3",
+          "label": "Badge 3",
+          "default": "No trans fat"
+        },
+        {
+          "type": "text",
+          "id": "badge_4",
+          "label": "Badge 4",
+          "info": "Leave any badge blank to hide it.",
+          "default": "No artificial colours"
+        }
+      ]
+    },
+    {
+      "type": "buttons",
+      "name": "Buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label_1",
+          "label": "First button label",
+          "info": "Leave blank to hide the button.",
+          "default": "Shop the bakery"
+        },
+        {
+          "type": "url",
+          "id": "button_link_1",
+          "label": "First button link"
+        },
+        {
+          "type": "text",
+          "id": "button_label_2",
+          "label": "Second button label",
+          "default": "Our story"
+        },
+        {
+          "type": "url",
+          "id": "button_link_2",
+          "label": "Second button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nutrilae hero",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "claim_badges"
+        },
+        {
+          "type": "buttons"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

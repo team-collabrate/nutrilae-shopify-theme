@@ -1,0 +1,23 @@
+{% comment %}
+  Renders a single Nutrilae claim badge (e.g. "Eggless", "No Palm Oil").
+
+  This is the shared badge primitive. It takes a plain label string, so it can be
+  driven by section settings today and by product metafields later without change.
+
+  Accepts:
+  - label: {String} Badge text. Required — nothing renders when blank.
+  - size: {String} "small" or "medium". Default: "medium" (optional)
+
+  Usage:
+  {% render 'nutrilae-claim-badge', label: 'Eggless', size: 'small' %}
+{% endcomment %}
+
+{%- liquid
+  assign badge_size = size | default: 'medium'
+-%}
+
+{%- if label != blank -%}
+  <span class="nutrilae-claim-badge nutrilae-claim-badge--{{ badge_size }}">
+    <span class="nutrilae-claim-badge__label">{{ label | escape }}</span>
+  </span>
+{%- endif -%}

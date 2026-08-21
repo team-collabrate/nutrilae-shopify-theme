@@ -1,0 +1,138 @@
+{{ 'section-nutrilae-promo-bar.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_vertical | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_vertical | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_vertical }}px;
+      padding-bottom: {{ section.settings.padding_vertical }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  class="nutrilae-promo-bar color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding{% if section.settings.bar_position == 'sticky' %} nutrilae-promo-bar--sticky{% endif %}{% if section.settings.show_line_separator %} nutrilae-promo-bar--bordered{% endif %}"
+  role="region"
+  aria-label="{{ 'sections.header.announcement' | t }}"
+>
+  <div class="page-width nutrilae-promo-bar__inner">
+    {%- for block in section.blocks -%}
+      <div
+        class="nutrilae-promo-bar__message{% unless forloop.first %} nutrilae-promo-bar__message--secondary{% endunless %}"
+        {{ block.shopify_attributes }}
+      >
+        {%- if block.settings.link != blank -%}
+          <a href="{{ block.settings.link }}" class="nutrilae-promo-bar__link link link--text focus-inset animate-arrow">
+        {%- endif -%}
+
+        {%- if block.settings.text != blank -%}
+          <span class="nutrilae-promo-bar__text">{{ block.settings.text | escape }}</span>
+        {%- endif -%}
+
+        {%- if block.settings.discount_code != blank -%}
+          <span class="nutrilae-promo-bar__code">{{ block.settings.discount_code | escape }}</span>
+        {%- endif -%}
+
+        {%- if block.settings.link != blank -%}
+            {{- 'icon-arrow.svg' | inline_asset_content -}}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Nutrilae promo bar",
+  "class": "nutrilae-promo-bar-section",
+  "max_blocks": 3,
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "bar_position",
+      "label": "Bar position",
+      "info": "Pinned scrolls away with the page. Sticky keeps the bar visible at the top. If you choose Sticky, set Header > Sticky header type to 'None' — two sticky elements will overlap each other.",
+      "options": [
+        {
+          "value": "pinned",
+          "label": "Pinned above header (scrolls away)"
+        },
+        {
+          "value": "sticky",
+          "label": "Sticky at top of screen"
+        }
+      ],
+      "default": "pinned"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "info": "Placeholder schemes are in use until Nutrilae's brand palette is confirmed.",
+      "default": "scheme-5"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line_separator",
+      "label": "Show separator line",
+      "info": "Adds a thin line between the promo bar and the header.",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Bar height (top and bottom padding)",
+      "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promo_message",
+      "name": "Promo message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Message",
+          "info": "Keep it short — long messages wrap onto two lines on mobile.",
+          "default": "Freshly baked every morning, delivered across Tamil Nadu"
+        },
+        {
+          "type": "text",
+          "id": "discount_code",
+          "label": "Discount code",
+          "info": "Shown as a highlighted code next to the message. Leave blank until the first-order discount is created in Settings > Discounts."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Message link",
+          "info": "Optional. Links the whole message, for example to the shop or a promo page."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nutrilae promo bar",
+      "blocks": [
+        {
+          "type": "promo_message"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

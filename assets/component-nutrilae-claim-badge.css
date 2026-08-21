@@ -1,0 +1,37 @@
+/* Nutrilae claim badge
+   Structural placeholder treatment: a neutral outlined pill. Deliberately not a
+   final visual design — the badge look is a brand-asset decision (PRD Section 3).
+   Colors inherit from the surrounding color scheme. */
+
+.nutrilae-claim-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.35);
+  border-radius: 10rem;
+  background-color: rgba(var(--color-background), 0.6);
+  white-space: nowrap;
+}
+
+.nutrilae-claim-badge__label {
+  font-weight: 700;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+  line-height: 1;
+  color: rgb(var(--color-foreground));
+}
+
+.nutrilae-claim-badge--small {
+  padding: 0.5rem 1rem;
+}
+
+.nutrilae-claim-badge--small .nutrilae-claim-badge__label {
+  font-size: 1rem;
+}
+
+.nutrilae-claim-badge--medium {
+  padding: 0.7rem 1.4rem;
+}
+
+.nutrilae-claim-badge--medium .nutrilae-claim-badge__label {
+  font-size: 1.2rem;
+}

@@ -9,54 +9,121 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "nutrilae_hero": {
+      "type": "nutrilae-hero",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
+            "heading": "Freshly baked. Zero shortcuts.",
             "heading_size": "h0"
           }
         },
-        "button": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Cakes, buns, breads and muffins baked every morning and delivered across Tamil Nadu.",
+            "text_style": "subtitle"
+          }
+        },
+        "claim_badges": {
+          "type": "claim_badges",
+          "settings": {
+            "badge_1": "Eggless options",
+            "badge_2": "No palm oil",
+            "badge_3": "No trans fat",
+            "badge_4": "No artificial colours"
+          }
+        },
+        "buttons": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
+            "button_label_1": "Shop the bakery",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_label_2": "Our story",
+            "button_link_2": ""
           }
         }
       },
       "block_order": [
         "heading",
-        "button"
+        "text",
+        "claim_badges",
+        "buttons"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
+        "image_overlay_opacity": 20,
+        "desktop_content_position": "left",
+        "desktop_content_alignment": "left",
         "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "show_text_box": true,
+        "color_scheme": "scheme-1"
       }
     },
-    "featured_collection": {
+    "category_showcase": {
+      "type": "collection-list",
+      "blocks": {
+        "cakes_brownies": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cakes-brownies"
+          }
+        },
+        "muffins": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "muffins"
+          }
+        },
+        "flavoured_buns": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "flavoured-buns"
+          }
+        },
+        "plain_burger_buns": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "plain-burger-buns"
+          }
+        },
+        "bread_loaves": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bread-loaves"
+          }
+        }
+      },
+      "block_order": [
+        "cakes_brownies",
+        "muffins",
+        "flavoured_buns",
+        "plain_burger_buns",
+        "bread_loaves"
+      ],
+      "settings": {
+        "title": "Pick your aisle",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-2",
+        "show_view_all": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 52,
+        "padding_bottom": 40
+      }
+    },
+    "bestsellers_grid": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
+        "title": "Baker's favourites",
+        "heading_size": "h1",
+        "description": "<p>The bakes people come back for, picked fresh every morning.<\/p>",
         "show_description": false,
-        "description_style": "body",
-        "collection": "all",
+        "description_style": "subtitle",
+        "collection": "bakers-favourites",
         "products_to_show": 8,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
@@ -64,21 +131,22 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "padding_top": 52,
+        "padding_bottom": 52
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "nutrilae_hero",
+    "category_showcase",
+    "bestsellers_grid"
   ]
 }

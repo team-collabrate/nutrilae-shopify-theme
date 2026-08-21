@@ -1,0 +1,86 @@
+/* Nutrilae promo bar
+   Layout and structure only. All colors come from the section's color scheme,
+   so swapping in the final brand palette is a theme-editor change, not a code change. */
+
+.nutrilae-promo-bar {
+  position: relative;
+  z-index: 5;
+}
+
+.nutrilae-promo-bar--sticky {
+  position: sticky;
+  top: 0;
+}
+
+.nutrilae-promo-bar--bordered {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
+}
+
+.nutrilae-promo-bar__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 3rem;
+  row-gap: 0.4rem;
+  text-align: center;
+}
+
+.nutrilae-promo-bar__message {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.04rem;
+  line-height: 1.4;
+}
+
+.nutrilae-promo-bar__link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  text-decoration: none;
+}
+
+.nutrilae-promo-bar__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.nutrilae-promo-bar__link .icon-arrow {
+  width: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Placeholder treatment: a plain outlined chip, deliberately not styled as a
+   final brand element. Revisit once brand assets land. */
+.nutrilae-promo-bar__code {
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  border: 0.1rem dashed rgba(var(--color-foreground), 0.5);
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Secondary messages are hidden on small screens so the bar stays one line. */
+@media screen and (max-width: 989px) {
+  .nutrilae-promo-bar__message--secondary {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .nutrilae-promo-bar__message {
+    font-size: 1.4rem;
+  }
+}
