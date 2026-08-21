@@ -1,0 +1,51 @@
+{{ 'component-nutrilae-product-details.css' | asset_url | stylesheet_tag }}
+
+{% comment %}
+  Renders an optional "message on cake" field as a cart line-item property.
+
+  This must be rendered inside the product form so the value posts with the
+  add-to-cart request and flows through to the cart and the order, which is why
+  it is a line-item property rather than a variant. Using variants for free text
+  would mean a new variant per message.
+
+  Eligibility is driven by the product tag "custom-message". Tags were chosen
+  over a metafield so the merchant can turn personalisation on or off per
+  product from the normal Admin product form, without a metafield definition.
+
+  Accepts:
+  - product: {Object} Product object. Required.
+  - product_form_id: {String} Id of the product form, used to keep the input's
+      id unique when a product appears more than once on a page. Required.
+
+  Usage:
+  {% render 'nutrilae-cake-message', product: product, product_form_id: product_form_id %}
+{% endcomment %}
+
+{%- liquid
+  assign eligible = false
+  if product.tags contains 'custom-message'
+    assign eligible = true
+  endif
+  assign field_id = 'NutrilaeCakeMessage-' | append: product_form_id
+-%}
+
+{%- if eligible -%}
+  <div class="nutrilae-cake-message">
+    <label class="nutrilae-cake-message__label" for="{{ field_id }}">
+      Message on the cake
+      <span class="nutrilae-cake-message__optional">(optional)</span>
+    </label>
+    <textarea
+      id="{{ field_id }}"
+      class="nutrilae-cake-message__input text-area field__input"
+      name="properties[Message on cake]"
+      rows="2"
+      maxlength="100"
+      placeholder="Happy birthday, Amma!"
+      aria-describedby="{{ field_id }}-help"
+    ></textarea>
+    <small id="{{ field_id }}-help" class="nutrilae-cake-message__help">
+      Up to 100 characters. Leave blank if you would rather have the cake plain.
+    </small>
+  </div>
+{%- endif -%}

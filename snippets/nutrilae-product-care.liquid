@@ -1,0 +1,57 @@
+{{ 'component-nutrilae-product-details.css' | asset_url | stylesheet_tag }}
+
+{% comment %}
+  Renders a product's ingredients, shelf life and storage instructions from its
+  metafields.
+
+  Reads:
+  - nutrilae.ingredients        multi line text
+  - nutrilae.shelf_life_days    integer, rendered as "N days"
+  - nutrilae.storage_instructions  multi line text
+
+  Each row is omitted when its metafield is empty, and the whole block is
+  omitted when all three are empty, so a partially filled product still renders
+  cleanly. Shelf life matters here: several Nutrilae products keep for only four
+  days, so it belongs on the page rather than in the description.
+
+  Accepts:
+  - product: {Object} Product object. Required.
+
+  Usage:
+  {% render 'nutrilae-product-care', product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign ingredients = product.metafields.nutrilae.ingredients.value
+  assign shelf_life = product.metafields.nutrilae.shelf_life_days.value
+  assign storage = product.metafields.nutrilae.storage_instructions.value
+-%}
+
+{%- if ingredients != blank or shelf_life != blank or storage != blank -%}
+  <div class="nutrilae-product-care">
+    <dl class="nutrilae-product-care__list">
+      {%- if ingredients != blank -%}
+        <div class="nutrilae-product-care__row">
+          <dt class="nutrilae-product-care__term">Ingredients</dt>
+          <dd class="nutrilae-product-care__value">{{ ingredients | newline_to_br }}</dd>
+        </div>
+      {%- endif -%}
+
+      {%- if shelf_life != blank -%}
+        <div class="nutrilae-product-care__row">
+          <dt class="nutrilae-product-care__term">Shelf life</dt>
+          <dd class="nutrilae-product-care__value">
+            {{- shelf_life }} {% if shelf_life == 1 %}day{% else %}days{% endif -%}
+          </dd>
+        </div>
+      {%- endif -%}
+
+      {%- if storage != blank -%}
+        <div class="nutrilae-product-care__row">
+          <dt class="nutrilae-product-care__term">Storage</dt>
+          <dd class="nutrilae-product-care__value">{{ storage | newline_to_br }}</dd>
+        </div>
+      {%- endif -%}
+    </dl>
+  </div>
+{%- endif -%}

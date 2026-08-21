@@ -1,0 +1,35 @@
+{{ 'component-nutrilae-product-details.css' | asset_url | stylesheet_tag }}
+
+{% comment %}
+  Renders a product's claim badges from its metafields.
+
+  Reads nutrilae.claims, a "list of single line text" metafield holding one
+  claim per entry (for example "Eggless", "No Palm Oil"). Nothing renders when
+  the metafield is empty, so products without confirmed claims simply show no
+  badge row rather than an empty container.
+
+  Accepts:
+  - product: {Object} Product object. Required.
+  - size: {String} "small" or "medium", passed through to each badge.
+      Default: "medium" (optional)
+
+  Usage:
+  {% render 'nutrilae-product-claims', product: product, size: 'small' %}
+{% endcomment %}
+
+{%- liquid
+  assign claims = product.metafields.nutrilae.claims.value
+  assign badge_size = size | default: 'medium'
+-%}
+
+{%- if claims != blank and claims.size > 0 -%}
+  <ul class="nutrilae-product-claims" role="list">
+    {%- for claim in claims -%}
+      {%- if claim != blank -%}
+        <li class="nutrilae-product-claims__item">
+          {%- render 'nutrilae-claim-badge', label: claim, size: badge_size -%}
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+{%- endif -%}

@@ -27,6 +27,12 @@
           "type": "price",
           "settings": {}
         },
+        "nutrilae_claims": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'nutrilae-product-claims', product: product %}"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -49,6 +55,12 @@
           "type": "description",
           "settings": {}
         },
+        "nutrilae_care": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'nutrilae-product-care', product: product %}"
+          }
+        },
         "share": {
           "type": "share",
           "settings": {
@@ -60,10 +72,12 @@
         "vendor",
         "title",
         "price",
+        "nutrilae_claims",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
         "description",
+        "nutrilae_care",
         "share"
       ],
       "settings": {

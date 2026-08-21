@@ -1,0 +1,98 @@
+/* Nutrilae product details
+   Claim badge row, ingredients/shelf-life/storage table, and the cake message
+   field. Loaded by the snippets that use them, so it only ships on pages that
+   actually render one of these components.
+
+   Every color comes from the active color scheme, so applying or changing the
+   brand palette stays a theme-editor change rather than a code change. */
+
+/* Claim badges ----------------------------------------------------------- */
+
+.nutrilae-product-claims {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nutrilae-product-claims__item {
+  display: inline-flex;
+}
+
+/* Ingredients, shelf life and storage ------------------------------------ */
+
+.nutrilae-product-care {
+  margin-top: 2.4rem;
+  padding-top: 2.4rem;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+.nutrilae-product-care__list {
+  display: grid;
+  gap: 1.6rem;
+  margin: 0;
+}
+
+.nutrilae-product-care__row {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.nutrilae-product-care__term {
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-heading-family);
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nutrilae-product-care__value {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+@media screen and (min-width: 750px) {
+  .nutrilae-product-care__row {
+    grid-template-columns: 12rem 1fr;
+    gap: 2rem;
+    align-items: baseline;
+  }
+}
+
+/* Cake message ----------------------------------------------------------- */
+
+.nutrilae-cake-message {
+  margin: 0 0 1.6rem;
+}
+
+.nutrilae-cake-message__label {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-heading-family);
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+}
+
+.nutrilae-cake-message__optional {
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.nutrilae-cake-message__input {
+  width: 100%;
+  resize: vertical;
+}
+
+.nutrilae-cake-message__help {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  opacity: 0.75;
+}
