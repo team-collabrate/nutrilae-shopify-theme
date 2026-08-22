@@ -8,49 +8,55 @@
       }
     },
     "intro": {
-      "type": "image-with-text",
+      "type": "nutrilae-hero",
       "blocks": {
-        "intro_caption": {
-          "type": "caption",
-          "settings": {
-            "caption": "Our story",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "medium"
-          }
-        },
         "intro_heading": {
           "type": "heading",
           "settings": {
-            "heading": "We started with one stubborn question",
-            "heading_size": "h1"
+            "heading": "We're Nutrilae — honest baking, no small print",
+            "heading_size": "h0"
           }
         },
         "intro_text": {
           "type": "text",
           "settings": {
-            "text": "<p>Why is it so hard to find a bake you can enjoy without reading the label twice? Nutrilae began with that question, and a kitchen determined to answer it — with cakes, buns, breads and muffins made the way we would want them made for our own families.</p>",
-            "text_style": "body"
+            "text": "Every cake, bun and loaf leaves our ovens the way we'd want to eat it ourselves — nothing hidden, nothing artificial, just good baking sent fresh across Tamil Nadu.",
+            "text_style": "subtitle"
+          }
+        },
+        "intro_badges": {
+          "type": "claim_badges",
+          "settings": {
+            "badge_1": "Eggless options",
+            "badge_2": "No palm oil",
+            "badge_3": "No trans fat",
+            "badge_4": "No artificial colours"
+          }
+        },
+        "intro_buttons": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop the bakery",
+            "button_link_1": "/collections/all",
+            "button_label_2": "",
+            "button_link_2": ""
           }
         }
       },
       "block_order": [
-        "intro_caption",
         "intro_heading",
-        "intro_text"
+        "intro_text",
+        "intro_badges",
+        "intro_buttons"
       ],
       "settings": {
-        "image_behavior": "none",
-        "height": "medium",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
-        "padding_top": 24,
-        "padding_bottom": 44
+        "image_height": "medium",
+        "image_overlay_opacity": 20,
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "scheme-4"
       }
     },
     "philosophy": {
