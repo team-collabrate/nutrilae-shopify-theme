@@ -24,24 +24,27 @@
 }
 
 .nutrilae-claims-strip__list {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 3.2rem 0;
+  display: flex;
+  gap: 2.4rem;
   margin: 0;
-  padding: 0;
+  padding: 0 0.4rem;
   list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
-.nutrilae-claims-strip__list--2-col-mobile {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.nutrilae-claims-strip__list::-webkit-scrollbar {
+  display: none;
 }
 
 .nutrilae-claims-strip__item {
   display: flex;
+  flex: 0 0 auto;
+  width: 13rem;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 2rem;
+  padding: 0 0.8rem;
 }
 
 .nutrilae-claims-strip__icon {
@@ -51,8 +54,8 @@
 
 .nutrilae-claims-strip__icon img,
 .nutrilae-claims-strip__icon svg {
-  width: 4.8rem;
-  height: 4.8rem;
+  width: 6.4rem;
+  height: 6.4rem;
   object-fit: contain;
 }
 
@@ -67,17 +70,24 @@
   text-transform: uppercase;
 }
 
-.nutrilae-claims-strip__description {
-  margin: 0.6rem 0 0;
-  font-size: 1.4rem;
-  line-height: 1.5;
-  opacity: 0.8;
-  max-width: 24rem;
-}
-
 @media screen and (min-width: 750px) {
   .nutrilae-claims-strip__list {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 0;
+    padding: 0;
+    overflow-x: visible;
+  }
+
+  .nutrilae-claims-strip__item {
+    width: auto;
+    padding: 0 2rem;
+  }
+
+  .nutrilae-claims-strip__icon img,
+  .nutrilae-claims-strip__icon svg {
+    width: 7.2rem;
+    height: 7.2rem;
   }
 
   .nutrilae-claims-strip__list--2-col {

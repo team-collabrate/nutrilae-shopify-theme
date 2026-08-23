@@ -28,7 +28,7 @@
     {%- endunless -%}
 
     <ul
-      class="nutrilae-claims-strip__list nutrilae-claims-strip__list--{{ section.settings.columns_desktop }}-col nutrilae-claims-strip__list--{{ section.settings.columns_mobile }}-col-mobile{% if section.settings.show_dividers %} nutrilae-claims-strip__list--divided{% endif %}"
+      class="nutrilae-claims-strip__list nutrilae-claims-strip__list--{{ section.settings.columns_desktop }}-col{% if section.settings.show_dividers %} nutrilae-claims-strip__list--divided{% endif %}"
       role="list"
     >
       {%- for block in section.blocks -%}
@@ -64,10 +64,6 @@
 
           {%- if block.settings.label != blank -%}
             <p class="nutrilae-claims-strip__label">{{ block.settings.label | escape }}</p>
-          {%- endif -%}
-
-          {%- if block.settings.description != blank -%}
-            <p class="nutrilae-claims-strip__description">{{ block.settings.description | escape }}</p>
           {%- endif -%}
         </li>
       {%- endfor -%}
@@ -122,16 +118,6 @@
       "max": 6,
       "step": 1,
       "default": 4
-    },
-    {
-      "type": "select",
-      "id": "columns_mobile",
-      "label": "Claims per row on mobile",
-      "options": [
-        { "value": "1", "label": "1 column" },
-        { "value": "2", "label": "2 columns" }
-      ],
-      "default": "2"
     },
     {
       "type": "color_scheme",
@@ -197,13 +183,6 @@
           "label": "Claim",
           "default": "No Palm Oil",
           "info": "Keep it short — two or three words. Confirm every claim is true of the Nutrilae recipe before publishing, as these are public marketing claims."
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Supporting line",
-          "default": "Not in a single recipe, ever.",
-          "info": "Optional. One short phrase backing up the claim."
         }
       ]
     }
@@ -216,40 +195,35 @@
           "type": "claim",
           "settings": {
             "icon_preset": "no_palm_oil",
-            "label": "No Palm Oil",
-            "description": "Not in a single recipe, ever."
+            "label": "No Palm Oil"
           }
         },
         {
           "type": "claim",
           "settings": {
             "icon_preset": "no_trans_fat",
-            "label": "No Trans Fat",
-            "description": "Good fats only, always."
+            "label": "No Trans Fat"
           }
         },
         {
           "type": "claim",
           "settings": {
             "icon_preset": "no_artificial",
-            "label": "No Artificial Colours",
-            "description": "Colour comes from real ingredients."
+            "label": "No Artificial Colours"
           }
         },
         {
           "type": "claim",
           "settings": {
             "icon_preset": "eggless",
-            "label": "Eggless Options",
-            "description": "On our brownies and lava cakes."
+            "label": "Eggless Options"
           }
         },
         {
           "type": "claim",
           "settings": {
             "icon_preset": "fresh_daily",
-            "label": "Baked Fresh Daily",
-            "description": "Out of the oven, then straight to you."
+            "label": "Baked Fresh Daily"
           }
         }
       ]
