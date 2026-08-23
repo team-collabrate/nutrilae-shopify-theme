@@ -45,6 +45,21 @@
                   alt: ''
               }}
             </div>
+          {%- elsif block.settings.icon_preset != 'none' -%}
+            <div class="nutrilae-claims-strip__icon">
+              {%- case block.settings.icon_preset -%}
+                {%- when 'no_palm_oil' -%}
+                  {{- 'icon-nutrilae-no-palm-oil.svg' | inline_asset_content -}}
+                {%- when 'no_trans_fat' -%}
+                  {{- 'icon-nutrilae-no-trans-fat.svg' | inline_asset_content -}}
+                {%- when 'no_artificial' -%}
+                  {{- 'icon-nutrilae-no-artificial.svg' | inline_asset_content -}}
+                {%- when 'eggless' -%}
+                  {{- 'icon-nutrilae-eggless.svg' | inline_asset_content -}}
+                {%- when 'fresh_daily' -%}
+                  {{- 'icon-nutrilae-fresh-daily.svg' | inline_asset_content -}}
+              {%- endcase -%}
+            </div>
           {%- endif -%}
 
           {%- if block.settings.label != blank -%}
@@ -156,10 +171,25 @@
       "name": "Claim",
       "settings": [
         {
+          "type": "select",
+          "id": "icon_preset",
+          "label": "Icon",
+          "info": "Built-in Nutrilae icons. Ignored if a custom icon image is uploaded below.",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "no_palm_oil", "label": "No Palm Oil" },
+            { "value": "no_trans_fat", "label": "No Trans Fat" },
+            { "value": "no_artificial", "label": "No Artificial Colours" },
+            { "value": "eggless", "label": "Eggless" },
+            { "value": "fresh_daily", "label": "Fresh Daily" }
+          ],
+          "default": "none"
+        },
+        {
           "type": "image_picker",
           "id": "icon",
-          "label": "Icon",
-          "info": "Optional. Use a simple square graphic, ideally 160 x 160 px. All icons should share one style so the row reads as a set."
+          "label": "Custom icon image",
+          "info": "Optional. Uploading an image here overrides the built-in icon above. Use a simple square graphic, ideally 160 x 160 px, matching the built-in icon style."
         },
         {
           "type": "text",
@@ -185,6 +215,7 @@
         {
           "type": "claim",
           "settings": {
+            "icon_preset": "no_palm_oil",
             "label": "No Palm Oil",
             "description": "Not in a single recipe, ever."
           }
@@ -192,6 +223,7 @@
         {
           "type": "claim",
           "settings": {
+            "icon_preset": "no_trans_fat",
             "label": "No Trans Fat",
             "description": "Good fats only, always."
           }
@@ -199,6 +231,7 @@
         {
           "type": "claim",
           "settings": {
+            "icon_preset": "no_artificial",
             "label": "No Artificial Colours",
             "description": "Colour comes from real ingredients."
           }
@@ -206,6 +239,15 @@
         {
           "type": "claim",
           "settings": {
+            "icon_preset": "eggless",
+            "label": "Eggless Options",
+            "description": "On our brownies and lava cakes."
+          }
+        },
+        {
+          "type": "claim",
+          "settings": {
+            "icon_preset": "fresh_daily",
             "label": "Baked Fresh Daily",
             "description": "Out of the oven, then straight to you."
           }

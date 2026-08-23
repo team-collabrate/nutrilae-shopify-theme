@@ -104,6 +104,7 @@
         "claim_palm_oil": {
           "type": "claim",
           "settings": {
+            "icon_preset": "no_palm_oil",
             "label": "No Palm Oil",
             "description": "Not in a single recipe, ever."
           }
@@ -111,6 +112,7 @@
         "claim_trans_fat": {
           "type": "claim",
           "settings": {
+            "icon_preset": "no_trans_fat",
             "label": "No Trans Fat",
             "description": "Good fats only, always."
           }
@@ -118,13 +120,23 @@
         "claim_colours": {
           "type": "claim",
           "settings": {
+            "icon_preset": "no_artificial",
             "label": "No Artificial Colours",
             "description": "Colour comes from real ingredients."
+          }
+        },
+        "claim_eggless": {
+          "type": "claim",
+          "settings": {
+            "icon_preset": "eggless",
+            "label": "Eggless Options",
+            "description": "On our brownies and lava cakes."
           }
         },
         "claim_fresh": {
           "type": "claim",
           "settings": {
+            "icon_preset": "fresh_daily",
             "label": "Baked Fresh Daily",
             "description": "Out of the oven, then straight to you."
           }
@@ -134,6 +146,7 @@
         "claim_palm_oil",
         "claim_trans_fat",
         "claim_colours",
+        "claim_eggless",
         "claim_fresh"
       ],
       "settings": {
@@ -141,7 +154,7 @@
         "heading_size": "h1",
         "subtitle": "The same standards whether it's one bun or a full loaf.",
         "show_dividers": true,
-        "columns_desktop": 4,
+        "columns_desktop": 5,
         "columns_mobile": "2",
         "color_scheme": "scheme-3",
         "padding_top": 56,
