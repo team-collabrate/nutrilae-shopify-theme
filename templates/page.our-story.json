@@ -71,7 +71,7 @@
         "why_heading": {
           "type": "heading",
           "settings": {
-            "heading": "No maida. No palm oil. No trans fat. No pretending.",
+            "heading": "No maida. No trans fat. No pretending.",
             "heading_size": "h1"
           }
         }
@@ -137,7 +137,7 @@
         "meaning_text": {
           "type": "text",
           "settings": {
-            "text": "<ul><li>No maida, no palm oil, no trans fat — not marketing copy, just what's in the recipe.</li><li>Freshness over shelf life. Shorter expiry, zero shortcuts. That's the trade we're happy to make.</li><li>Claims we can back. If it's on the badge, it's on the ingredient list.</li></ul>",
+            "text": "<ul><li>No maida, no trans fat — not marketing copy, just what's in the recipe.</li><li>Freshness over shelf life. Shorter expiry, zero shortcuts. That's the trade we're happy to make.</li><li>Claims we can back. If it's on the badge, it's on the ingredient list.</li></ul>",
             "text_style": "body"
           }
         }

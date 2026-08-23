@@ -30,9 +30,9 @@
           "type": "claim_badges",
           "settings": {
             "badge_1": "Eggless options",
-            "badge_2": "No palm oil",
-            "badge_3": "No trans fat",
-            "badge_4": "No artificial colours"
+            "badge_2": "No trans fat",
+            "badge_3": "No artificial colours",
+            "badge_4": ""
           }
         },
         "buttons": {
@@ -118,13 +118,6 @@
     "claims_strip": {
       "type": "nutrilae-claims-strip",
       "blocks": {
-        "claim_palm_oil": {
-          "type": "claim",
-          "settings": {
-            "icon_preset": "no_palm_oil",
-            "label": "No Palm Oil"
-          }
-        },
         "claim_trans_fat": {
           "type": "claim",
           "settings": {
@@ -155,7 +148,6 @@
         }
       },
       "block_order": [
-        "claim_palm_oil",
         "claim_trans_fat",
         "claim_colours",
         "claim_eggless",
@@ -166,7 +158,7 @@
         "heading_size": "h1",
         "subtitle": "The same standards in every bake, from a single bun to a full loaf.",
         "show_dividers": true,
-        "columns_desktop": 5,
+        "columns_desktop": 4,
         "color_scheme": "scheme-3",
         "padding_top": 56,
         "padding_bottom": 56
@@ -193,7 +185,7 @@
         "story_text": {
           "type": "text",
           "settings": {
-            "text": "<p>So we started baking the things we would happily hand our own families. No palm oil, no trans fat, nothing artificial hiding in the small print — just cakes, buns and breads baked fresh every morning and sent right across Tamil Nadu.<\/p>",
+            "text": "<p>So we started baking the things we would happily hand our own families. No trans fat, nothing artificial hiding in the small print — just cakes, buns and breads baked fresh every morning and sent right across Tamil Nadu.<\/p>",
             "text_style": "body"
           }
         },
