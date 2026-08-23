@@ -70,37 +70,37 @@
             "collection": "cakes-brownies"
           }
         },
-        "muffins": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "muffins"
-          }
-        },
-        "flavoured_buns": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "flavoured-buns"
-          }
-        },
-        "plain_burger_buns": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "plain-burger-buns"
-          }
-        },
         "bread_loaves": {
           "type": "featured_collection",
           "settings": {
             "collection": "bread-loaves"
           }
+        },
+        "buns_rusks": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "buns"
+          }
+        },
+        "cookies": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cookies"
+          }
+        },
+        "millets": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "millets"
+          }
         }
       },
       "block_order": [
         "cakes_brownies",
-        "muffins",
-        "flavoured_buns",
-        "plain_burger_buns",
-        "bread_loaves"
+        "bread_loaves",
+        "buns_rusks",
+        "cookies",
+        "millets"
       ],
       "settings": {
         "title": "Pick your aisle",
@@ -279,7 +279,7 @@
         "description": "<p>The bakes people come back for, picked fresh every morning.<\/p>",
         "show_description": false,
         "description_style": "subtitle",
-        "collection": "bakers-favourites",
+        "collection": "all",
         "products_to_show": 8,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
