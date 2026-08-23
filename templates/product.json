@@ -78,7 +78,6 @@
         }
       },
       "block_order": [
-        "judge_me_reviews_review_widget_8Q9wYB",
         "vendor",
         "title",
         "price",
@@ -88,7 +87,8 @@
         "buy_buttons",
         "description",
         "nutrilae_care",
-        "share"
+        "share",
+        "judge_me_reviews_review_widget_8Q9wYB"
       ],
       "settings": {
         "enable_sticky_info": true,
