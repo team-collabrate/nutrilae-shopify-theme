@@ -57,7 +57,7 @@
         "image_overlay_opacity": 20,
         "desktop_content_position": "left",
         "desktop_content_alignment": "left",
-        "mobile_content_alignment": "center",
+        "mobile_content_alignment": "left",
         "show_text_box": true,
         "color_scheme": "scheme-1"
       }
