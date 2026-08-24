@@ -163,6 +163,11 @@
 
   .nutrilae-hero--content-left .nutrilae-hero__content {
     justify-content: flex-start;
+    padding-left: 0;
+  }
+
+  .nutrilae-hero--content-left .nutrilae-hero__box {
+    padding-left: 2rem;
   }
 
   .nutrilae-hero--content-center .nutrilae-hero__content {
