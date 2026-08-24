@@ -15,8 +15,8 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Freshly baked, Zero shortcuts.",
-            "heading_size": "hxl"
+            "heading": "Freshly baked. Zero shortcuts.",
+            "heading_size": "h0"
           }
         },
         "text": {
@@ -52,13 +52,12 @@
         "buttons"
       ],
       "settings": {
-        "image": "shopify://shop_images/bf1caaa2-97e8-4b67-a013-8851451eb817.png",
-        "image_height": "large",
-        "image_overlay_opacity": 10,
+        "image_height": "full_screen",
+        "image_overlay_opacity": 20,
         "desktop_content_position": "left",
         "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "show_text_box": false,
+        "mobile_content_alignment": "center",
+        "show_text_box": true,
         "color_scheme": "scheme-1"
       }
     },
@@ -114,34 +113,6 @@
         "swipe_on_mobile": true,
         "padding_top": 52,
         "padding_bottom": 40
-      }
-    },
-    "bestsellers_grid": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Baker's favourites",
-        "heading_size": "h1",
-        "description": "<p>The bakes people come back for, picked fresh every morning.</p>",
-        "show_description": false,
-        "description_style": "subtitle",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 52,
-        "padding_bottom": 52
       }
     },
     "claims_strip": {
@@ -214,7 +185,7 @@
         "story_text": {
           "type": "text",
           "settings": {
-            "text": "<p>So we started baking the things we would happily hand our own families. No trans fat, nothing artificial hiding in the small print — just cakes, buns and breads baked fresh every morning and sent right across Tamil Nadu.</p>",
+            "text": "<p>So we started baking the things we would happily hand our own families. No trans fat, nothing artificial hiding in the small print — just cakes, buns and breads baked fresh every morning and sent right across Tamil Nadu.<\/p>",
             "text_style": "body"
           }
         },
@@ -234,10 +205,10 @@
         "story_button"
       ],
       "settings": {
+        "image_behavior": "none",
         "height": "medium",
         "desktop_image_width": "medium",
         "layout": "image_first",
-        "image_behavior": "none",
         "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
@@ -288,6 +259,34 @@
         "columns_desktop": 3,
         "columns_mobile": "1",
         "color_scheme": "scheme-2",
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "bestsellers_grid": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Baker's favourites",
+        "heading_size": "h1",
+        "description": "<p>The bakes people come back for, picked fresh every morning.<\/p>",
+        "show_description": false,
+        "description_style": "subtitle",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
         "padding_top": 52,
         "padding_bottom": 52
       }
