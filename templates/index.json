@@ -52,7 +52,7 @@
         "buttons"
       ],
       "settings": {
-        "image": "shopify://shop_images/0a42efa7-2e73-4f95-8114-242c5759a614_1.png",
+        "image": "shopify://shop_images/hero.png",
         "image_height": "medium",
         "image_overlay_opacity": 20,
         "desktop_content_position": "left",
