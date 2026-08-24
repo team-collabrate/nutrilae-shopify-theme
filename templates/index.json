@@ -15,8 +15,8 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Freshly baked. Zero shortcuts.",
-            "heading_size": "h0"
+            "heading": "Freshly baked, Zero shortcuts.",
+            "heading_size": "hxl"
           }
         },
         "text": {
@@ -53,7 +53,7 @@
       ],
       "settings": {
         "image": "shopify://shop_images/hero.png",
-        "image_height": "medium",
+        "image_height": "large",
         "image_overlay_opacity": 20,
         "desktop_content_position": "left",
         "desktop_content_alignment": "left",
