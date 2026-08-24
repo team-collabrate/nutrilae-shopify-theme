@@ -54,11 +54,11 @@
       "settings": {
         "image": "shopify://shop_images/bf1caaa2-97e8-4b67-a013-8851451eb817.png",
         "image_height": "large",
-        "image_overlay_opacity": 20,
+        "image_overlay_opacity": 10,
         "desktop_content_position": "left",
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "left",
-        "show_text_box": true,
+        "show_text_box": false,
         "color_scheme": "scheme-1"
       }
     },
