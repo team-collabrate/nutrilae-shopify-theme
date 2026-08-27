@@ -95,6 +95,43 @@
         "padding_bottom": 52
       }
     },
+    "backed": {
+      "type": "image-with-text",
+      "blocks": {
+        "backed_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "We didn't start baking yesterday. Nutrilae did.",
+            "heading_size": "h1"
+          }
+        },
+        "backed_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Behind every Nutrilae box is a team that's spent years perfecting the actual craft — running FSSAI-certified kitchens, holding hygiene standards that don't relax when no one's checking, and never learning to cut corners.</p><p>Our flour, sugar, and dairy come straight from farmers in Coimbatore and Pollachi — no faceless supply chain in between. A-grade raw materials aren't a claim we print on a box; they're the only ingredients we've ever known how to work with.</p><p>Nutrilae is simply the first time we're putting our own name on it.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "backed_heading",
+        "backed_text"
+      ],
+      "settings": {
+        "image_behavior": "none",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-2",
+        "color_scheme": "scheme-2",
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
     "mission": {
       "type": "image-with-text",
       "blocks": {
@@ -113,13 +150,13 @@
         "image_behavior": "none",
         "height": "medium",
         "desktop_image_width": "medium",
-        "layout": "text_first",
+        "layout": "image_first",
         "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "left",
-        "section_color_scheme": "scheme-2",
-        "color_scheme": "scheme-2",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
         "padding_top": 52,
         "padding_bottom": 52
       }
@@ -155,8 +192,8 @@
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "left",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
+        "section_color_scheme": "scheme-2",
+        "color_scheme": "scheme-2",
         "padding_top": 52,
         "padding_bottom": 52
       }
@@ -188,6 +225,7 @@
     "main",
     "hero",
     "why",
+    "backed",
     "mission",
     "meaning",
     "closing"
