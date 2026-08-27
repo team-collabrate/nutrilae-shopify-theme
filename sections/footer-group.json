@@ -32,7 +32,7 @@
           "type": "text",
           "settings": {
             "heading": "Contact us",
-            "subtext": "<p>Add your customer support email, phone number and opening hours here before launch.</p>"
+            "subtext": "<ul><li><strong>contact@nutrilae.com</strong></li><li><strong>Call: +91 63829 23115</strong></li><li><strong>Coimbatore, Tamilnadu.</strong></li></ul>"
           }
         }
       },

@@ -55,7 +55,7 @@
         "desktop_content_alignment": "center",
         "mobile_content_alignment": "center",
         "show_text_box": true,
-        "color_scheme": "scheme-4"
+        "color_scheme": "scheme-3"
       }
     },
     "why": {
@@ -81,10 +81,10 @@
         "why_heading"
       ],
       "settings": {
-        "image_behavior": "none",
         "height": "medium",
         "desktop_image_width": "medium",
         "layout": "image_first",
+        "image_behavior": "ambient",
         "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
@@ -118,10 +118,10 @@
         "backed_text"
       ],
       "settings": {
-        "image_behavior": "none",
         "height": "medium",
         "desktop_image_width": "medium",
         "layout": "text_first",
+        "image_behavior": "none",
         "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
@@ -147,10 +147,10 @@
         "mission_text"
       ],
       "settings": {
-        "image_behavior": "none",
         "height": "medium",
         "desktop_image_width": "medium",
         "layout": "image_first",
+        "image_behavior": "none",
         "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
@@ -184,10 +184,10 @@
         "meaning_text"
       ],
       "settings": {
-        "image_behavior": "none",
         "height": "medium",
         "desktop_image_width": "medium",
         "layout": "image_first",
+        "image_behavior": "none",
         "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
