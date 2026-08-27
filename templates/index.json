@@ -65,22 +65,10 @@
     "category_showcase": {
       "type": "collection-list",
       "blocks": {
-        "cakes_brownies": {
+        "millets": {
           "type": "featured_collection",
           "settings": {
-            "collection": "cakes-brownies"
-          }
-        },
-        "bread_loaves": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "bread-loaves"
-          }
-        },
-        "buns_rusks": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "buns"
+            "collection": "millets"
           }
         },
         "cookies": {
@@ -89,19 +77,31 @@
             "collection": "cookies"
           }
         },
-        "millets": {
+        "buns_rusks": {
           "type": "featured_collection",
           "settings": {
-            "collection": "millets"
+            "collection": "buns"
+          }
+        },
+        "bread_loaves": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bread-loaves"
+          }
+        },
+        "cakes_brownies": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cakes-brownies"
           }
         }
       },
       "block_order": [
-        "cakes_brownies",
-        "bread_loaves",
-        "buns_rusks",
+        "millets",
         "cookies",
-        "millets"
+        "buns_rusks",
+        "bread_loaves",
+        "cakes_brownies"
       ],
       "settings": {
         "title": "Pick your aisle",
